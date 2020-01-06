@@ -37,11 +37,75 @@
     padding: 0 14px 0 10px;
     position: relative;
 }
+.login-right .mainmenu:hover{
+    background: #fff;
+    border: 1px solid #f2f2f2;
+    border-bottom: 1px solid pink;
+}
+.login-right .mainmenu:hover >a{
+    color: #ff0036;
+}
+.login-right .mainmenu:hover .arrow{
+    transform: rotate(180deg);
+}
+.login-right .mainmenu:hover .submenu{
+    display: block;
+}
+.login-right .mainmenu:hover::after{
+    content: "";
+    position: absolute;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: #fff;
+    top: 32px;
+    left: 0px;
+}
+.login-right .submenu{
+    display: none;
+    position: absolute;
+    width: 73px;
+    top: 32px;
+    padding: 8px 10px;
+    left: -1px;
+    border: 1px solid #f2f2f2;
+    background: #fff;
+    z-index: 2;
+}
+
 .login-right >li >a{
     color:#fff;
     font-family: "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
     line-height: 32px;
 
+}
+.login-right .submenu li{
+    height: 34px;
+    line-height: 34px;
+
+}
+.login-right .submenu li a{
+    color: #666;
+}
+.login-right .submenu li:hover a{
+    color: #ff0036;
+}
+.icon-gouwuche{
+    font-size: 14px;
+    /* color: #fe0036; */
+    font-weight: 700;
+    margin-right: 3px;
+}
+.icon-shouji{
+    font-size: 12px;
+    /* color: #fe0036; */
+    font-weight: 500;
+}
+.icon-wangzhandaohang{
+    font-size: 14px;
+    /* color: #fe0036; */
+    font-weight: 700;
+    margin-right: 6px;
 }
 .login-right .arrow{
     width: 0;
@@ -51,4 +115,64 @@
     position: absolute;
     right:5px;
     top:16px;
+    transition: transform 0.3s ease;
+    transform-origin: 50% 25%;
+}
+.logo{
+    position: relative;
+    float: left;
+    left: -45px;
+    top: 6px;
+}
+.search{
+    float: left;
+    margin-left:30px;
+    width: 625px;
+    height: 40px;
+    border:2px solid #ff0036;
+    margin-top:40px;
+    position: relative;
+    right: -20px;
+}
+.search input{
+    width: 491px;
+    height: 30px;
+    border:none;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    float: left;
+}
+.search button{
+    width: 124px;
+    height: 40px;
+    background: #ff0036;
+    text-align: center;
+    line-height: 40px;
+    border:none;
+    color: #fff;
+    font-size: 18px;
+    float: left;
+    font-weight: 700;
+    /* 字符之间空隙 */
+    letter-spacing: 5px;
+}
+.nav li{
+    float: left;
+    height: 35px;
+    line-height: 35px;
+}
+.nav li:first-child{
+    margin-left:200px;
+}
+.nav img{
+    width: 100px;
+    height: 30px;
+    margin-top: 2px;
+}
+.nav a{
+    color:#333;
+    font-size: 16px;
+    padding: 0 8px;
+    font-weight: bold;
 }
