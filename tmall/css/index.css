@@ -249,5 +249,71 @@ width: 1230px;
     height: 500px;
     overflow: hidden;
 }
-
+.cate-content{
+    position: relative;
+}
+.sub-category{
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    background: #fff;
+    height: 500px;
+    width: 852px;
+    display: none;
+}
+.cate-left-title{
+    float: left;
+    width: 104px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+}
+.cate-left-content{
+    float: left;
+    width: 500px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #eee;
+}
+.cate-right{
+    float: right;
+    width: 208px;
+    background: green;
+    padding: 10px;
+    /* 问问老师怪异盒模型的意思 */
+    box-sizing: border-box;
+}
+.cate-left{
+    float: left;
+    width: 644px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+.cate-right-content img{
+width: 100%;
+display: block;
+}
+.cate-right-content a{
+    width: 50%;
+    float: left;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    box-sizing: border-box;
+}
+.cate-right-content{
+    background: #ffffff;
+}
+.cate-row{
+    margin: 10px 0;
+}
+.cate-left-content a{
+    color: #666;
+    font-size: 14px;
+    margin-left:13px;
+    line-height: 22px;
+    height: 22px;
+    float: left;
+}
+.cate-list:hover .sub-category{
+display: block;
+}
 
