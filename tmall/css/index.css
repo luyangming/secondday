@@ -193,16 +193,61 @@ body{
     width: 200px;
     left: 0px;
     top: -35px;
-    background: yellow;
-    height: 556.17px;
-    line-height: 275%;
+ 
+  
 }
 .slider-box img{
 width: 1230px;
 
 }
-.category li,.category h3{
-    font-size: 20px;
-    text-align: center;
-    
+.cate-title{
+    background: #eee;
+    color: #DD2727;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 20px;
 }
+.cate-content{
+    background: rgba(0,0,0,.55);
+    height: 500px;
+}
+.cate-content >li{
+    height: 31px;
+    line-height: 31px;
+}
+.cate-list >a{
+    color: #fff;
+    font-size: 14px;
+}
+.cate-list >a:hover{
+    text-decoration: none;
+}
+.cate-list > span{
+    color: #fff;
+    opacity: 0.5;
+    margin: 0 10px 0 20px;
+}
+.cate-list:hover{
+    background: #fff;
+}
+.cate-list:hover >a,.cate-list:hover >span{
+    color: #e54077;
+}
+.cate-list-blue:hover >a,.cate-list-blue:hover >span{
+    color: #427def;
+}
+.cate-list-purple:hover >a,.cate-list-purple:hover >span{
+    color: #6347ed;
+}
+.cate-list-yellow:hover >a,.cate-list-yellow:hover >span{
+    color: #f7a831;
+}
+.slider-box{
+    background: #0000ff;
+    height: 500px;
+    overflow: hidden;
+}
+
+
