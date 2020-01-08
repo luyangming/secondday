@@ -184,7 +184,7 @@ body{
     background: url("../images/background.png") center 83px no-repeat;
 }
 .slider{
-    height: 300px;
+    height: 500px;
     background: white;
     position: relative;
 }
@@ -279,7 +279,6 @@ width: 1230px;
     width: 208px;
     background: green;
     padding: 10px;
-    /* 问问老师怪异盒模型的意思 */
     box-sizing: border-box;
 }
 .cate-left{
@@ -315,5 +314,73 @@ display: block;
 }
 .cate-list:hover .sub-category{
 display: block;
+}
+/* 年货节 */
+.year-good-title{
+    display: block;
+    height: 105px;
+    text-align: center;
+}
+.year-good-title img{
+    width: 300px;
+    height: 65px;
+    margin-top: 20px;
+}
+.year-good-list{
+    width: 610px;
+    height: 330px;
+    background: #ff0000;
+    float: left;
+}
+.page-item-first{
+    text-align: center;
+    height: 330px;
+    width: 250px;
+    background: url(../images/beijing01.png);
+    border-radius: 5px;
+    float: left;
+}
+.pate-item-title{
+font-size: 24px;
+padding-top: 32px;
+color: #ff5200;
+font-weight: 700;
+}
+.page-item-desc{
+font-size: 18px;
+color: #ff5200;
+margin-bottom: 20px;
+}
+.page-item-img{
+width: 180px;
+height: 180px;
+}
+.page-item-second{
+    width: 350px;
+    height: 160px;
+    background: url(../images/second-1.png);
+    padding-left: 30px;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    border-radius: 5px;
+
+}
+.page-item-second img{
+position: absolute;
+right: 17px;
+top: 30px;
+width: 130px;
+height: 130px;
+}
+.page-item:last-child{
+margin-top: 10px;
+}
+.page-item a{
+    text-decoration: none;
+}
+.year-good-list:first-child{
+    margin-right: 10px;
 }
 
