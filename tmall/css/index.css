@@ -471,6 +471,82 @@ border-radius: 8px;
 margin-top: 4px;
 color: #fff;
 }
+/* 天猫超市 */
+.tianmaochaoshi{
+    margin-top: 20px;
+    height: 665px;
+    /* overflow: hidden; */
+}
+.tianmao-left{
+    width: 235px;
+    /* background: red; */
+    float: left;
+    overflow: hidden;
+    /* position: relative; */
+}
+.tianmao-right{
+    width: 995px;
+    background:white;
+    float: right;
+    height: 618px;
+    /* padding-bottom: 12px; */
+    
+    /* position: absolute; */
+}
+.tianmao-left .maotai img{
+    width: 100%;
+    height: 618px;
+  
+}
+.tianmaotitle img{
+    width: 214px;
+    height: 25px;
+}
+.tianmao-right-1-list >li{
+    width: 231px;
+    height: 57px;
+    background: black;
+    float: left;
+    color: white;
+    line-height: 57px;
+    text-align: center;
+    font-size: 18px;
+    /* padding: 0 ; */
+    
+}
+.tianmao-right-1-list{
+    padding: 0 11px 0 11px;
+}
+.tianmao-right-1-list:hover .tianmao-right-1-list-right{
+    background: green;
+}
+
+.tianmao-right .tianmao-right-12{
+    width: 234px;
+    height: 300px;
+    border: 1px solid #fff;
+    float: left;
+    /* margin-top: 8px; */
+    margin-left: 12px;
+    background: green;
+ 
+  
+}
+.tianmao-right .tianmao-right-1{
+    float: left;
+    margin-left: 13px;
+    width: 484px;
+    height: 301px;
+    background: red;
+}
+.tianmao-content{
+    margin-top: 10px;
+    /* padding-bottom: 12px; */
+}
+.tianmao-right .tianmao-right-12:hover{
+    border: 1px solid red;
+}
+
 
 
 
