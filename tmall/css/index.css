@@ -515,7 +515,7 @@ width: 234px;
 height: 301px;
 margin-left: 13px;
 margin-bottom: 12px;
-background: green;
+/* background: green; */
 border: 1px solid green;
 text-align: center;
 
@@ -564,11 +564,11 @@ text-decoration: none;
     top: 20px;
     text-decoration: none;
 }
-.item:hover .shandong{
+.tianmao-right-box .it:hover{
     border: 1px solid red;
 }
 .item .shandong{
-    height: 299px;
+    height: 303px;
 }
 
 
