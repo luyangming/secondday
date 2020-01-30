@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+
+        }
+
+        .contener {
+            width: 750px;
+            height: 291px;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-box li {
+            float: left;
+            width: 750px;
+        }
+
+        .image-box {
+            width: 3750px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: left 1s linear;
+        }
+
+        .button-box {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .arrow-box {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .arrow-box li,
+        .button-box li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: rgb(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 5px;
+            margin-right: 5px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .button-box .active {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contener">
+        <ul class="image-box">
+            <li class="selected">
+                <img src="img/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/5.jpg" alt="">
+            </li>
+        </ul>
+        <ul class="button-box">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul class="arrow-box">
+            <li id="pre">&lt</li>
+            <li id="next">&gt</li>
+        </ul>
+    </div>
+    <script>
+        var btnBox = document.getElementsByClassName("button-box")[0];
+        var aBtn = btnBox.getElementsByTagName("li");
+        var oImgBox = document.getElementsByClassName("image-box")[0];
+        var opre = document.getElementById("pre");
+        var onext = document.getElementById("next");
+        var inow = 0;
+        for (i = 0; i < aBtn.length; i++) {
+            aBtn[i].index = i;
+            aBtn[i].onclick = function () {
+                change(this.index);
+                inow = this.index;
+            }
+        }
+        onext.onclick = function () {
+            inow++;
+            if (inow > aBtn.length - 1) {
+                inow = 0;
+            }
+            change(inow);
+        }
+        opre.onclick = function () {
+            inow--;
+            if (inow < 0) {
+                inow = aBtn.length - 1;
+            }
+            change(inow);
+        }
+        function change(index) {
+            for (j = 0; j < aBtn.length; j++) {
+                aBtn[j].className = "";
+            }
+            aBtn[index].className = "active";
+            oImgBox.style.left = -index * 750 + "px";
+        }
+    </script>
+</body>
+
+</html>

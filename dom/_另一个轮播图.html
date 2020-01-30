@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    
+    *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 750px;
+            height: 291px;
+            overflow: hidden;
+            margin:50px auto;
+            position: relative;
+        }
+        .img-box{
+            width:3750px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            transition: left 1s linear;
+        }
+        .img-box li{
+            float: left;
+            width:750px;
+        }
+        .btn-box{
+            position: absolute;
+            right:10px;
+            bottom:10px;
+        }
+        .arrow-box{
+            position: absolute;
+            left:10px;
+            bottom: 10px;
+        }
+        .btn-box li,.arrow-box li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 5px;
+            margin-right: 5px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .btn-box .active{
+            background: #ff0036;
+        }
+    
+    </style>
+</head>
+<body>
+        
+
+
+    <div id="container">
+        <ul class="img-box">
+            <li class="selected">
+                <img src="img/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/5.jpg" alt="">
+            </li>
+        </ul>
+        <ul class="btn-box">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul class="arrow-box">
+            <li id="prev-btn">&lt;</li>
+            <li id="next-btn">&gt;</li>
+        </ul>
+    </div>
+
+    <script>
+        var btnBox = document.getElementsByClassName("btn-box")[0];
+        var aBtn = btnBox.getElementsByTagName("li");
+        var oImgBox = document.getElementsByClassName("img-box")[0];
+        var oNext = document.getElementById('next-btn');
+        var oPre=document.getElementById("prev-btn");
+        var iNow = 0;
+         for(i=0;i<aBtn.length;i++){
+             aBtn[i].index=i;
+             aBtn[i].onclick=function(){
+                 change(this.index);
+                 iNow=this.index;
+                //  for(j=0;j<aBtn.length;j++){
+                //      aBtn[j].className="";
+                //  }
+                //  this.className="active";
+                //  oImgBox.style.left=-this.index*750+"px";
+             }
+         }
+         oNext.onclick = function(){
+            iNow++;
+            if(iNow > aBtn.length-1){
+                iNow = 0;
+            }
+            change(iNow);
+        }
+        oPre.onclick=function(){
+            iNow--;
+            if(iNow<0){
+                iNow = aBtn.length-1;
+            }
+            change(iNow);
+        }
+         function change(index){
+            for(var j=0; j<aBtn.length; j++){
+                aBtn[j].className = "";
+            }
+            aBtn[index].className = "active";
+            oImgBox.style.left = -index*750+"px";  
+        }
+         
+
+
+    </script>
+</body>
+</html>
