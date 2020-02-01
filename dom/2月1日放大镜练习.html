@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #smallbox {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            float: left;
+        }
+
+        #smallbox img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #mask {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            display: none;
+        }
+
+        #bigbox {
+            width: 400px;
+            height: 400px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+
+        #bigbox img {
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="continer">
+        <div id="smallbox">
+            <img src="images/1.jpg" alt="">
+            <span id="mask"></span>
+        </div>
+        <div id="bigbox">
+            <img id="bigimage" src="images/2.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var oSmallbox = document.getElementById("smallbox");
+        var oMask = document.getElementById("mask");
+        var oBigbox = document.getElementById("bigbox");
+        var oBigimage = document.getElementById("bigimage");
+        oSmallbox.onmouseover = function () {
+            oMask.style.display = "inline";
+        }
+        oSmallbox.onmousemove = function (e) {
+            e = e || window.event;
+            var oleft = e.clientX - oMask.offsetWidth / 2;
+            var otop = e.clientY - oMask.offsetTop / 2;
+            var xMax = oSmallbox.offsetWidth - oMask.offsetWidth;
+            var yMax = oSmallbox.offsetHeight - oMask.offsetHeight;
+            if (oleft < 0) {
+                oleft = 0;
+            }
+            if(oleft>xMax){
+                oleft=xMax;
+            }
+            if(otop<0){
+                otop=0;
+            }
+            if(otop>yMax){
+                otop=yMax;
+            }
+            oMask.style.left=oleft+"px";
+            oMask.style.top=otop+"px";
+
+
+            oBigbox.style.display="block";
+            var bigLeft=(oBigimage.offsetWidth-oBigbox.offsetWidth)*oleft/xMax;
+            var bigTop=(oBigimage.offsetHeight-oBigbox.offsetHeight)*otop/yMax;
+            oBigimage.style.left=-bigLeft+"px";
+            oBigimage.style.top=-bigTop+"px";
+        }
+        oSmallbox.onmouseout=function(){
+             oMask.style.display="none";
+             oBigbox.style.display="none"
+        }
+    </script>
+
+</body>
+
+</html>

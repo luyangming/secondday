@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    #smallbox {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        float: left;
+    }
+
+    #smallbox img {
+        width: 100%;
+        height: 100%;
+    }
+    #mask{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255,255,255,0.5);
+        display: none;
+        cursor: pointer;
+    }
+    #bigbox{
+        height: 400px;
+        width: 400px;
+        overflow: hidden;
+        float: left;
+        display: none;
+        position: relative;
+    }
+    #bigbox img{
+        width: 800px;
+        height: 800px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+</style>
+
+<body>
+    <div id="continer">
+        <div id="smallbox">
+            <img src="images/1.jpg" alt="">
+            <span id="mask"></span>
+        </div>
+        <div id="bigbox">
+            <img id= "bigimage"src="images/2.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var oSmallbox=document.getElementById("smallbox");
+        var oMask=document.getElementById("mask");
+        var oBigbox=document.getElementById("bigbox");
+        var oImage=document.getElementById("bigimage");
+        oSmallbox.onmouseover=function(){
+            oMask.style.display="inline";
+        }
+        oSmallbox.onmousemove=function(e){
+         e = e||window.event;
+            var oleft=e.clientX-oMask.offsetWidth/2;
+            var otop=e.clientY-oMask.offsetTop/2;
+            var xMax=oSmallbox.offsetWidth-oMask.offsetWidth;
+            var yMax=oSmallbox.offsetHeight-oMask.offsetHeight;
+
+            if(oleft<0){
+              oleft=0;
+        }
+        if(oleft>xMax){
+              oleft=xMax;
+        }
+         if(otop<0){
+             otop=0;
+         }
+         if(otop>yMax){
+             otop=yMax;
+         }
+         oMask.style.left=oleft+"px";
+         oMask.style.top=otop+"px";
+
+         // 右边元素
+         oBigbox.style.display="block";
+         var bigLeft=(oImage.offsetWidth-oBigbox.offsetWidth)*oleft/xMax;
+         var bigTop=(oImage.offsetHeight-oBigbox.offsetHeight)*otop/yMax;
+         
+         oImage.style.left=-bigLeft+"px";
+         oImage.style.top=-bigTop+"px";
+        }
+
+        oSmallbox.onmouseout=function(){
+            oMask.style.display="none";
+            oBigbox.style.display="none";
+        }
+
+
+    </script>
+</body>
+
+</html>
