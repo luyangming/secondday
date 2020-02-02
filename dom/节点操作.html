@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">
+        我是div1
+        <p id="p1">我是p2</p>
+        <span id="span1">我是span1</span>
+    </div>
+
+    <script>
+        var Odiv = document.getElementById("div1");
+        var Op1 = document.getElementById("p1");
+        var oSpan = document.getElementById("span1");
+
+
+
+        var oH2 = document.createElement("h2");
+        oH2.innerHTML = "哈哈哈哈哈";
+        // Odiv.appendChild(oH2);
+        //    Odiv.removeChild(oSpan);
+        // Odiv.replaceChild(oH2,Op1);
+        // Odiv.insertBefore(oH2,oSpan);
+        var oP2 = Op1.cloneNode(true);
+        Odiv.appendChild(oP2);
+    </script>
+</body>
+
+</html>
