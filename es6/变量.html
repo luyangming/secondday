@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- let和var的区别
+       let没有变量提升
+       let不能重复命名 ,var可以，后面会把前面覆盖掉
+       块级作用域
+       临时失效区
+    -->
+    <script>
+        // console.log(a);//undefined 定义了但是没有赋值
+        // var a=10;
+
+        //   console.log(b);
+        //   let b=10;
+
+        //    var c=10;
+        //    var c=20;
+        //    console.log(c);//20 会覆盖
+        // let c=10;
+        // let c=20;
+        // console4.log(c);
+        //var只有函数作用域和全局作用域   let有块级作用域，出了花括号，let没有用
+        // var m = 5;
+        // if (m) {
+        //     let n = 100;
+        // }
+        // console.log(n);
+
+        // var x = 10;
+        // function a() {
+        //     console.log(x);
+        //     var x = 20;//var变量提升，相当于在前面加了一个var x但是没有赋值
+        // }
+        // a();
+
+    </script>
+</body>
+
+</html>
