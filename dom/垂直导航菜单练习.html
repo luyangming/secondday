@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      #container{
+          width: 300px;
+          border: 1px solid #000;
+      }
+      #container h2{
+            background: #000000;
+            color:#fff;
+            cursor: pointer;
+      }
+      #container ul{
+          display: none;
+      }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="container">
+        <div id="div1">
+            <h2>导航区</h2>
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+                <li>444</li>
+            </ul>
+        </div>
+        <div id="div2">
+            <h2>搜索区</h2>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var aH2=document.getElementsByTagName("h2");
+        var aUl=document.getElementsByTagName("ul");
+        var flag=false;
+          //找到每一个h2 ，让其显示
+          for(i=0;i<aH2.length;i++){
+              aH2[i].index=i;
+              aH2[i].onclick=function(){
+              var oUl=aUl[this.index];
+              if(flag){
+                oUl.style.display='none';
+              }else{
+                oUl.style.display='block';
+              }
+             flag=!flag;
+              }
+          }
+    </script>
+</body>
+
+</html>
