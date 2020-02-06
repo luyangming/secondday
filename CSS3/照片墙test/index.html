@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url(img/bg.jpg);
+        }
+
+        .item {
+            width: 125px;
+            height: 125px;
+            border: 5px solid #fff;
+            position: absolute;
+            top: -135px;
+            left: -135px;
+            transition: all 1.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        var count = 0;
+        // 循环创建24张照片
+        var oContainer = document.getElementById("container");
+        for (var i = 0; i < 24; i++) {
+            var oImg = new Image();
+            oImg.onload = function () {
+                count++;
+                if (count == 24) {
+                    onload();
+                }
+            }
+            oImg.src = "img/thumbs/" + (i + 1) + ".jpg"
+        }
+        function onload() {
+            var index = 0;
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 6; j++) {
+                    var oDiv = document.createElement("div");
+                    oDiv.className = "item";
+                    index++;
+                    oDiv.style.background = "url(img/thumbs/" + (index) + ".jpg) 0 0 no-repeat";
+                    oDiv.onclick=fn;
+                    oDiv.row = i;
+                    oDiv.col = j;
+                    oContainer.appendChild(oDiv);
+                }
+            }
+            var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+            var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            var aDiv = oContainer.getElementsByTagName("div");
+            var spaceX = (screenWidth - 135 * 6) / 7;
+            var spaceY = (screenHeight - 135 * 4) / 5;
+            var divWidth = aDiv[0].offsetWidth;
+            var divHeight = aDiv[0].offsetHeight;
+            for (i = 0; i < aDiv.length; i++) {
+                aDiv[i].style.transitionDelay = (23 - i) * 100 + "ms";
+                var row = aDiv[i].row;
+                var col = aDiv[i].col;
+                aDiv[i].style.left = (col + 1) * spaceX + col * divWidth + "px";
+                aDiv[i].style.top = (row + 1) * spaceY + row * divHeight + "px";
+                aDiv[i].style.transform = "rotate(" + (Math.random() * 40 - 20) + "deg)";
+               
+            }
+            var iLeft = (screenWidth - 127 * 6) / 2;
+            var iTop = (screenHeight - 127 * 4) / 2;
+            function fn() {
+                for (var i = 0; i < aDiv.length; i++) {
+                    var oDiv = aDiv[i];
+                    var col = aDiv[i].col;
+                    var row = aDiv[i].row;
+                    oDiv.style.transitionDelay = "0ms";
+                    oDiv.style.left = iLeft + col * 127 + "px";
+                    oDiv.style.top = iTop + row * 127 + "px";
+                    oDiv.style.transform = "rotate(0deg)";
+                    oDiv.style.borderWidth="1px";
+
+                }
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
