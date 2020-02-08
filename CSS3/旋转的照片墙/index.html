@@ -101,6 +101,8 @@
             }
             oImg.src = "img/" + (i + 1) + ".jpg"
         }
+
+        
         function OnLoadsuccess() {
             var index = 0;
             for (i = 0; i < 4; i++) {
@@ -189,6 +191,7 @@
                     var oSpan=aDiv[i].getElementsByTagName("span")[0];
                     oSpan.style.transitionDelay=Math.random()*500+"ms";
                     oSpan.style.backgroundImage="url(img/"+iNow+".jpg)";
+                    
                 }
             }
         }

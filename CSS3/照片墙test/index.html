@@ -25,6 +25,41 @@
             left: -135px;
             transition: all 1.5s ease;
         }
+
+        .span {
+            height: 125px;
+            width: 125px;
+            background: #0000ff;
+            display: none;
+        }
+
+        #next {
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            text-align: center;
+            line-height: 80px;
+            background: #fff;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: none;
+        }
+
+        #pre {
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            text-align: center;
+            line-height: 80px;
+            background: #fff;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: none;
+        }
     </style>
 </head>
 
@@ -32,20 +67,43 @@
     <div id="container">
 
     </div>
+    <div id="next">
+        &gt;
+    </div>
+    <div id="pre">
+        &lt;
+    </div>
     <script>
         var count = 0;
+        var iNow = 0;
+        var flag = true; //true为散开 flase为合上
+        var oNext = document.getElementById("next");
+        var oPre = document.getElementById("pre");
         // 循环创建24张照片
         var oContainer = document.getElementById("container");
         for (var i = 0; i < 24; i++) {
             var oImg = new Image();
             oImg.onload = function () {
                 count++;
-                if (count == 24) {
+                if (count == 48) {
                     onload();
                 }
             }
             oImg.src = "img/thumbs/" + (i + 1) + ".jpg"
         }
+
+        for (var i = 0; i < 24; i++) {
+            var oImg = new Image();
+            oImg.onload = function () {
+                count++;
+                if (count == 48) {
+                    onload();
+                }
+            }
+            oImg.src = "img/" + (i + 1) + ".jpg";
+        }
+
+
         function onload() {
             var index = 0;
             for (var i = 0; i < 4; i++) {
@@ -54,7 +112,9 @@
                     oDiv.className = "item";
                     index++;
                     oDiv.style.background = "url(img/thumbs/" + (index) + ".jpg) 0 0 no-repeat";
-                    oDiv.onclick=fn;
+                    oDiv.onclick = fn;
+                    oDiv.innerHTML = "<span class='span'></span>";
+                    oDiv.idx = index;//索引为1-24
                     oDiv.row = i;
                     oDiv.col = j;
                     oContainer.appendChild(oDiv);
@@ -74,24 +134,69 @@
                 aDiv[i].style.left = (col + 1) * spaceX + col * divWidth + "px";
                 aDiv[i].style.top = (row + 1) * spaceY + row * divHeight + "px";
                 aDiv[i].style.transform = "rotate(" + (Math.random() * 40 - 20) + "deg)";
-               
+
             }
             var iLeft = (screenWidth - 127 * 6) / 2;
             var iTop = (screenHeight - 127 * 4) / 2;
             function fn() {
-                for (var i = 0; i < aDiv.length; i++) {
-                    var oDiv = aDiv[i];
-                    var col = aDiv[i].col;
-                    var row = aDiv[i].row;
-                    oDiv.style.transitionDelay = "0ms";
-                    oDiv.style.left = iLeft + col * 127 + "px";
-                    oDiv.style.top = iTop + row * 127 + "px";
-                    oDiv.style.transform = "rotate(0deg)";
-                    oDiv.style.borderWidth="1px";
-
+                if (flag) {//合
+                    for (var i = 0; i < aDiv.length; i++) {
+                        var oDiv = aDiv[i];
+                        var oSpan = oDiv.getElementsByTagName("span")[0];
+                        var col = aDiv[i].col;
+                        var row = aDiv[i].row;
+                        oDiv.style.transitionDelay = "0ms";
+                        oDiv.style.left = iLeft + col * 127 + "px";
+                        oDiv.style.top = iTop + row * 127 + "px";
+                        oDiv.style.transform = "rotate(0deg)";
+                        oDiv.style.borderWidth = "1px";
+                        oSpan.style.display = "block";
+                        oSpan.style.background = "url(img/" + (this.idx) + ".jpg)" + -col * 125 + "px " + -row * 125 + "px";
+                    }
+                    oNext.style.display = "block";
+                    oPre.style.display="block";
+                    iNow = this.idx;
+                } else {//散开
+                    for (i = 0; i < aDiv.length; i++) {
+                        // aDiv[i].style.transitionDelay = (23 - i) * 100 + "ms";
+                        var row = aDiv[i].row;
+                        var col = aDiv[i].col;
+                        aDiv[i].style.left = (col + 1) * spaceX + col * divWidth + "px";
+                        aDiv[i].style.top = (row + 1) * spaceY + row * divHeight + "px";
+                        aDiv[i].style.transform = "rotate(" + (Math.random() * 40 - 20) + "deg)";
+                        aDiv[i].style.borderWidth="5px";
+                        var oSpan=aDiv[i].getElementsByTagName("span")[0];
+                        oSpan.style.display="none";
+                    }
+                        oNext.style.display="none";
+                        oPre.style.display="none";
                 }
+                     flag=!flag;
             }
-
+                      oNext.onclick=function(){
+                          iNow++;
+                          if(iNow>aDiv.length){
+                              iNow=1
+                          }
+                          for(var i=0;i<aDiv.length;i++){
+                            var oSpan=aDiv[i].getElementsByTagName("span")[0];
+                            oSpan.style.transitionDelay=Math.random()*500+"ms";
+                            oSpan.style.backgroundImage="url(img/"+iNow+".jpg)";
+                          }
+                         
+                      }
+                      oPre.onclick=function(){
+                          iNow--;
+                          if(iNow<1){
+                              iNow=aDiv.length;
+                          }
+                          for(var i=0;i<aDiv.length;i++){
+                            var oSpan=aDiv[i].getElementsByTagName("span")[0];
+                            oSpan.style.transitionDelay=Math.random()*500+"ms";
+                            oSpan.style.backgroundImage="url(img/"+iNow+".jpg)";
+                          }
+                         
+                      }
         }
 
     </script>
