@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 最外层容器居中 */
+        .container {
+            width: 350px;
+            margin: 20px auto;
+        }
+
+        .ul1 {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        .ul1 li {
+            float: left;
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid red;
+            margin-right: 10px;
+            background: #ccc;
+        }
+        .ul1 .activity{
+            background: red;
+            color: #fff;
+        }
+           .content div{
+               width: 350px;
+               height: 100px;
+               border: 1px solid black;
+               display: none;
+           }
+           .content .selected{
+               display: block;
+           }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="ul1">
+            <li class="activity">吃饭</li>
+            <li>睡觉</li>
+            <li>敲代码</li>
+        </ul>
+        <div class="content">
+            <div class="selected">吃</div>
+            <div>睡</div>
+            <div>敲</div>
+        </div>
+
+
+    </div>
+      <script src="jquery-1.12.4.js"></script>
+       <script>
+        $('.ul1 li').on('click',function(){
+          $(this).addClass("activity").siblings().removeClass("activity");
+          var index=$(this).index();
+          $('.content div').eq(index).addClass("selected").siblings().removeClass('selected')
+        })
+
+       </script>
+</body>
+</html>
