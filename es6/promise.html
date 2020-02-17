@@ -13,7 +13,7 @@
         setTimeout(() => {
             var code=1;
             console.log(code);
-            if(code==1){
+            if(code==0){
                 resolve();//成功时走向resolve 然后到then
             }else{
                 reject();
@@ -30,6 +30,8 @@
                  console.log('对不起，请求失败');
              }
         )
+
+         
 
     </script>
 </body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let p1=new Promise(function(resolve,reject){
+            setTimeout(() => {
+                console.log('1 ok');
+                resolve();
+            }, 2000);
+        })
+
+        let p2=new Promise(function(resolve,reject){
+            setTimeout(() => {
+                console.log('2 ok');
+                resolve();
+            }, 1000);
+        })
+
+        let p3=new Promise(function(resolve,reject){
+            setTimeout(() => {
+                console.log('3 ok');
+                reject();
+            }, 3000);
+        })
+
+
+        //    Promise.all([p1,p2,p3]).then(function(){
+        //      console.log('okokok')
+        //    }).catch(function(){
+        //     console.log('失败')
+        //    })
+
+                  //找最快的，最快的成功执行then，否则执行catch
+              Promise.race([p1,p2,p3]).then(function(){
+                 console.log('111')
+              }).catch(function(){
+                console.log('222')
+              })
+
+    </script>
+</body>
+</html>
