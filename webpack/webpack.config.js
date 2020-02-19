@@ -1,5 +1,6 @@
 const path = require("path");
 module.exports = {
+    mode:"development",
     // 入口文件 
     entry: "./src/index.js",
     // 出口文件 打包到哪
@@ -20,7 +21,23 @@ module.exports = {
                          name:'[name].[ext]'
                     }
                 }
-            }
+            },
+            {
+                test:/\.css$/,
+                use:[
+                    "style-loader",
+                    "css-loader"
+                ]
+            },
+            {
+                test:/\.scss$/,
+                use:[
+                    "style-loader",
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader"
+                ]
+            },
         ]
     }
 }
