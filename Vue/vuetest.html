@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #red{
+             height: 200px;
+             width: 200px;
+             background:red;
+         }
+         #blue{
+             height: 200px;
+             width: 200px;
+             background:blue;
+         }
+    </style>
+</head>
+<body>
+    <div id="div1">
+            <button @click='fn()'>click</button>
+            <div id="red" v-if='isShow'>111</div>
+            <div id="blue" v-else>222</div>
+            <ul>
+                <li v-if='type==1'>111</li>
+                <li v-else-if='type==2'>222</li>
+                <li v-else-if='type==3'>333</li>
+            </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+         new Vue({
+             el:'#div1',
+             data:{ 
+                  isShow:true,
+                  type:3
+             },
+             methods:{
+               fn(){
+                   this.isShow=!this.isShow
+               }
+             }
+         })
+
+    </script>
+</body>
+</html>
