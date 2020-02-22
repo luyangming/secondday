@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #app{
+            width: 500px;
+            margin:0 auto;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+        }
+        .active{
+            background:red;
+        }
+        .right{
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>todolist</h2>
+        <hr>
+        <div>
+            名称：<input type="text" v-model="proName" placeholder="请输入商品名称">
+            价格：<input type="number" v-model="proPrice" placeholder="请输入商品价格">
+            <button @click="add()">添加</button>
+        </div>
+        <div>
+            <input type="text" v-model="searchValue" placeholder="请输入查询的商品名称" @keyup="search()">
+            <button @click="search()">搜索</button>
+        </div>
+          <ul>
+              <li v-for="(obj,index) in list"
+              @click="change(obj)"
+              v-if="obj.isInclude"
+              :class="{active:obj.isActive}"
+              >
+              <input type="checkbox" v-model="obj.isActive">
+               <span>{{obj.name}}</span>
+               <div class="right">
+                     <span>{{obj.price}}</span>
+                     <span @click.stop="del(index)">[x]</span>
+               </div>
+              </li>
+          </ul>
+          <div>
+              <button @click="delAll()">删除</button>
+              <span>{{total()}}</span>
+          </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+       new Vue({
+           el:'#app',
+           data:{
+               list:[
+                   {
+                       name:"iphone11",
+                       price:9800,
+                       isActive:false,
+                       isInclude:true
+                   },
+                   {
+                       name:"iphoneX",
+                       price:10260,
+                       isActive:false,
+                       isInclude:true
+                   },
+                   {
+                       name:"iphoneE",
+                       price:5000,
+                       isActive:false,
+                       isInclude:true
+                   }
+               ],
+               proName:"",
+               proPrice:"",
+               searchValue:""
+           },
+           methods:{
+                  add(){
+                      this.list.push({
+                      name:this.proName,
+                      isActive:false,
+                      isInclude:true,
+                      price:Number.parseFloat(this.proPrice)
+                      })
+                      this.proPrice="";
+                      this.proName="";
+                  },
+                  change(obj){
+                      obj.isActive=!obj.isActive;
+                  },
+                  del(index){
+                      this.list.splice(index,1)
+                  },
+                  total(){
+                      let sum=0;
+                      this.list.forEach(function(obj,index){
+                          if(obj.isActive){
+                             sum+=obj.price;
+                          }
+                      })
+                     return sum;
+                  },
+                   delAll(){
+                        var arr=this.list.filter(function(obj,index){
+                              return obj.isActive==false;
+                       })
+                        this.list=arr;
+                   },
+                   search(){
+                         this.list.forEach((obj,index)=>{
+                             if(obj.name.includes(this.searchValue)){
+                               obj.isInclude=true;
+                             }else{
+                                 obj.isInclude=false;
+                             }
+                         })
+                   }
+           }
+       })
+
+    </script>
+</body>
+
+</html>
