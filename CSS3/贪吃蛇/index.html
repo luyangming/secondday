@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+         #container{
+             width: 1038px;
+             height: 650px;
+             background: pink;
+             margin: 0 auto;
+             position: relative;
+         }
+         #map-panel{
+             width: 631px;
+             height: 421px;
+             background: #cccccc;
+             position: absolute;
+             left: 90px;
+             top: 140px;
+         }
+         #map-bg{
+             /* 边框合并 */
+             border-collapse: collapse;
+         }
+         #map-bg td{
+             width: 20px;
+             height: 20px;
+             border: 1px solid red;
+         }
+         .snake{
+             width: 20px;
+             height: 20px;background: rgb(0,255,255);
+         }
+         .food{
+             height: 20px;
+             width: 20px;
+             background: rgb(255,255,0);
+         }
+         #control-panel{
+             width: 196px;
+             height: 500px;
+             position: absolute;
+             left: 800px;
+             top: 100px;
+             /* background: red; */
+             text-align: center;
+         }
+         #control-panel button{
+             width: 178px;
+             height: 52px;
+             background: blue;
+             margin-bottom: 20px;
+             border: 0;
+         }
+         #speed-panel{
+            width: 196px;
+            height: 204px;
+            background: blue;
+         }
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+        <div id="map-panel">
+            <table id="map-bg">
+
+            </table>
+           
+        </div>
+         <div id="control-panel">
+             <button id="btn-start">开始游戏</button>
+             <button id="btn-setting">游戏设置</button>
+             <button id="btn-quit">退出游戏</button>
+             <button id="btn-help">帮助</button>
+             <div id="speed-panel">速度</div>
+         </div>
+    </div>
+</body>
+</html>
