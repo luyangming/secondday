@@ -1,86 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-         #container{
-             width: 1038px;
-             height: 650px;
-             background: pink;
-             margin: 0 auto;
-             position: relative;
-         }
-         #map-panel{
-             width: 631px;
-             height: 421px;
-             background: #cccccc;
-             position: absolute;
-             left: 90px;
-             top: 140px;
-         }
-         #map-bg{
-             /* 边框合并 */
-             border-collapse: collapse;
-         }
-         #map-bg td{
-             width: 20px;
-             height: 20px;
-             border: 1px solid red;
-         }
-         .snake{
-             width: 20px;
-             height: 20px;background: rgb(0,255,255);
-         }
-         .food{
-             height: 20px;
-             width: 20px;
-             background: rgb(255,255,0);
-         }
-         #control-panel{
-             width: 196px;
-             height: 500px;
-             position: absolute;
-             left: 800px;
-             top: 100px;
-             /* background: red; */
-             text-align: center;
-         }
-         #control-panel button{
-             width: 178px;
-             height: 52px;
-             background: blue;
-             margin-bottom: 20px;
-             border: 0;
-         }
-         #speed-panel{
+
+        #container {
+            width: 1038px;
+            height: 650px;
+            background: pink;
+            margin: 0 auto;
+            position: relative;
+            background: url(img/bg.jpg);
+        }
+
+        #map-panel {
+            width: 631px;
+            height: 421px;
+            /* background: #cccccc; */
+            position: absolute;
+            left: 90px;
+            top: 140px;
+        }
+
+        #map-bg {
+            /* 边框合并 */
+            border-collapse: collapse;
+        }
+
+        #map-bg td {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #cccccc;
+        }
+
+        .snake {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 64px;
+            background: rgb(0, 255, 255);
+        }
+
+        .food {
+            height: 20px;
+            width: 20px;
+            background: rgb(255, 255, 0);
+            position: absolute;
+        }
+
+        #control-panel {
+            width: 196px;
+            height: 500px;
+            position: absolute;
+            left: 800px;
+            top: 100px;
+            /* background: red; */
+            text-align: center;
+        }
+
+        #control-panel button {
+            width: 178px;
+            height: 52px;
+            /* background: blue; */
+            margin-bottom: 20px;
+            border: 0;
+        }
+
+        #speed-panel {
             width: 196px;
             height: 204px;
             background: blue;
-         }
+        }
+
+        #btn-start {
+            background: url(img/start-game.png);
+        }
+
+        #btn-setting {
+            background: url(img/game-setting.png);
+        }
+
+        #btn-quit {
+            background: url(img/quit-game.png);
+        }
+
+        #btn-help {
+            background: url(img/help.png);
+        }
+
+        #speed-panel {
+            background: url(img/speed-panel.png);
+        }
     </style>
 </head>
+
 <body>
-    
+
     <div id="container">
         <div id="map-panel">
             <table id="map-bg">
 
             </table>
-           
+
         </div>
-         <div id="control-panel">
-             <button id="btn-start">开始游戏</button>
-             <button id="btn-setting">游戏设置</button>
-             <button id="btn-quit">退出游戏</button>
-             <button id="btn-help">帮助</button>
-             <div id="speed-panel">速度</div>
-         </div>
+        <div id="control-panel">
+            <button id="btn-start"></button>
+            <button id="btn-setting"></button>
+            <button id="btn-quit"></button>
+            <button id="btn-help"></button>
+            <div id="speed-panel"></div>
+        </div>
     </div>
+
+    <script>
+        var oMapTable = document.getElementById("map-bg");
+        var oMappanle = document.getElementById('map-panel');
+        var oBtn1 = document.getElementById("btn-start");
+        for (var row = 0; row < 20; row++) {
+            var oTr = document.createElement("tr");
+            for (var col = 0; col < 30; col++) {
+                var oTd = document.createElement("td");
+                oTr.appendChild(oTd);
+            }
+            oMapTable.appendChild(oTr);
+        }
+        //初始化蛇
+        var snakeBody = [];
+        for (var i = 0; i < 3; i++) {
+            var oDiv = document.createElement('div');
+            oDiv.className = "snake";
+            oDiv.style.left = i * 20 + (i + 1) + "px";
+            oMappanle.appendChild(oDiv);
+            snakeBody.push(oDiv);
+        }
+
+        //初始化食物
+        do {
+            var bFlag = true;
+            var food = document.createElement('div');
+            var iLeft = parseInt(Math.random() * 30);
+            var iTop = parseInt(Math.random() * 20);
+            iLeft = iLeft * 21 + 1;
+            iTop = iTop * 21 + 1;
+            for (var i = 0; i < 3; i++) {
+                if (snakeBody[i].offsetLeft == iLeft && snakeBody[i].offsetTop == iTop) {
+                    bFlag = false;
+                }
+            }
+            food.className = "food";
+            food.style.left = iLeft + "px";
+            food.style.top = iTop + "px";
+            oMappanle.appendChild(food);
+        } while (!bFlag)
+
+        oBtn1.onclick = function () {
+            setInterval(function () {
+                for (var i = 0; i < snakeBody.length; i++) {
+                    snakeBody[i].style.left = snakeBody[i].offsetLeft + 21 + "px";
+                }
+            }, 300);
+        }
+    </script>
 </body>
+
 </html>
