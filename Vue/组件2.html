@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <hello :title="msg" content="内容一">
+            <h2 slot="slot1">第一个要放的slot元素</h2>
+            <div slot="slot2">
+                <a href="#">百度</a>
+            </div>
+        </hello>
+        <!-- <hello title="标题二" content="内容二"></hello> -->
+    </div>
+
+    <template id="temp">
+        <div>
+            <slot name="slot1"></slot>
+            <h2>标题是：{{title}}</h2>
+            <h2>内容是：{{content}}</h2>
+            <slot name="slot2"></slot>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                msg: '标题1'
+            },
+            components: {
+                "hello": {
+                    template: "#temp",
+                    props: ["title", "content"]
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
