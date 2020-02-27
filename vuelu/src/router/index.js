@@ -5,6 +5,8 @@ import Movie from './../views/Movie.vue'
 
 Vue.use(VueRouter)
 
+
+
 const routes = [
   {
     path: '/',
