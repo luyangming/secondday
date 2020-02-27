@@ -4,6 +4,9 @@ import Music from './../views/Music.vue'
 import Movie from './../views/Movie.vue'
 
 Vue.use(VueRouter)
+
+
+
 const routes = [
   {
     path: '/',
