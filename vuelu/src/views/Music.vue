@@ -1,9 +1,9 @@
 <template>
     <div>
-   我是首页
-   {{$store.state.count}}
-   <router-link to="/top/a">A</router-link>
-   <router-view/>
+     我是音乐界面
+
+
+     欢迎来到音乐界面
     </div>
 </template>
 

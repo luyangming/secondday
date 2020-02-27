@@ -6,6 +6,7 @@ import Top from './../views/Top.vue'
 import Test from './../views/Test.vue'
 import A from './../views/A.vue'
 import Error from './../views/Error'
+import Test1 from './../views/Test1'
 Vue.use(VueRouter)
 
 const routes = [
@@ -47,6 +48,10 @@ const routes = [
       {
         path:'/',
         redirect:'/top'
+      },
+      {
+          path:'/test1',
+          component:Test1
       },
       {
         path:'*',

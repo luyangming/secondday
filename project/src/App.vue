@@ -12,6 +12,7 @@
     <!-- <router-link :to="{name:'detail',params:{id:25,name:'xx'}}">详情页</router-link> | -->
     <!-- <router-link to="/test">测试页</router-link> | -->
     <router-link to="/abc">abc</router-link> |
+    <router-link to="/test1">test1</router-link> |
     <transition name="fade">
     <router-view/>
     </transition>
