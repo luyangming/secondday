@@ -5,10 +5,6 @@
       
        <router-view/>
      </div>
-     
-     
-     
-    
      <common-footer></common-footer>
   </div>
 </template>

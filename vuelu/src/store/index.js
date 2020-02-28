@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    title:"电影",
-    color:"red"
+    color:"red",
+    title:"电影"
   },
   mutations: {
     change(state,{color,title}){
