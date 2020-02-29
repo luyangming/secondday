@@ -1,7 +1,10 @@
 <template>
     <div>
        <ul class="list-box">
-           <li class="list" v-for="obj in movieList" :key="obj.id">
+           <li class="list" 
+           v-for="obj in movieList" 
+           @click="gotoDetail(obj.id)"
+           :key="obj.id">
                <img :src="obj.images.medium" alt="">
                <div class="desc-box">
                    <h3>{{obj.original_title}}</h3>
@@ -27,6 +30,11 @@ import axios from 'axios'
         data(){
             return{
             movieList:[]
+            }
+        },
+        methods:{
+            gotoDetail(id){
+                this.$router.push({path:'/movie-detail',query:{id}})
             }
         },
         created(){

@@ -1,18 +1,31 @@
 <template>
     <div>
-     我是音乐界面
-
-
-     欢迎来到音乐界面
+     <img  v-for="obj in musicList " :key="obj.id" :src="obj.bg" alt="">
     </div>
 </template>
 
 <script>
+import axios from 'axios'
     export default {
-        
+        data(){
+            return{
+                musicList:[]
+            }
+        },
+        created(){
+            axios.get('data/musiclist.json')
+            .then((res)=>{
+             this.musicList=res.data.albums;
+            }).catch(()=>{
+             console.log(res);
+            })
+        }
     }
 </script>
 
 <style lang="scss" scoped>
-
+img{
+    width: 50%;
+    float: left;
+}
 </style>
