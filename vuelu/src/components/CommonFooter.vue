@@ -39,7 +39,7 @@
         },
         created(){
           this.menu.forEach((obj,index)=>{
-             if(obj.path==this.$route.path){
+             if(this.$route.path.includes(obj.path)){
                  this.$store.commit("change",obj)
              }
           })

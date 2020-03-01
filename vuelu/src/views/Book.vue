@@ -1,12 +1,15 @@
 <template>
     <div>
-   我是图书页
+      <swipe></swipe>
     </div>
 </template>
 
 <script>
+import Swipe from './../components/Swipe'
     export default {
-        
+        components:{
+            Swipe
+        }
     }
 </script>
 
