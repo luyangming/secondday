@@ -14,9 +14,47 @@
         // console.log(arr.join('.'))
 
         // 
-        var a=10;
-        console.log(++a)
+    //     function fn(arr){
+    //         let obj={};
+    //         var result=[];
+    //         for(var i=0;i<arr.length;i++){
+    //              if(!obj[arr[i]]){
+    //                  result.push(arr[i]);
+    //                 obj[arr[i]]=1;
+    //              }else{
+    //                 obj[arr[i]]++;
+    //              }
+    //         }
+    //         return obj;
+    //     }
 
+
+    //    let arr=[1,2,3,4,5,1,2];
+    //    console.log(fn(arr))
+
+
+       function Person(name,age){
+           this.name=name;
+           this.age=age;
+       }
+        let p1=new Person('zs',20);
+        let p2=new Person('lisi',21);
+        Person.prototype.say=function(){
+           console.log('hahahah');
+        }
+        p1.say();
+        console.log(p2);
+
+
+        function Coder(name,age){
+          Person.call(this,name,age)
+        }
+        Coder.prototype =new Person();
+        Coder.prototype.constructor=Coder;
+        let c1=new Coder('xiaoqiang',21);
+        let c2=new Coder('daqiang',21);
+        console.log(c1,c2);
+         c1.say()
     </script>
 </body>
 </html>
