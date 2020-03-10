@@ -10,15 +10,16 @@
     
 
     <script>
-        var str='a,b,c';
-        var num=0;
-        if(num==0){//是不是有效值
-            console.log('111')
-        }else{
-            console.log('222')
+      var dog = {
+            name:'旺财',
+            
+            eat:function(){
+                // 对当前对象的引用
+                this.age="20"
+            }
         }
-        
-        
+        var d1=new dog.eat()
+        console.log(d1.age)
     </script>
 </body>
 </html>
