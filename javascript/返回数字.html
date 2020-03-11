@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var result="";
+       function fn(str){
+           for(var i=0;i<str.length;i++){
+              var a=str.charAt(i);
+              if(a>=0&&a<=9){
+                  result+=a;
+              }
+           }
+           return result;
+       }
+         console.log( fn("a1s2d3f4g4")  );
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ArrSort(arr, start, end) {
+            var stand = arr[start];
+            var low = start;
+            var high = end;
+            if (start < end) {
+                while (low < high) {
+                    while (low < high && stand <= arr[high]) {
+                        high--;
+                    }
+                    arr[low] = arr[high];
+                    while (low < high && arr[low] <= stand) {
+                        low++;
+                    }
+                    arr[high] = arr[low];
+
+                }
+                arr[low] = stand;
+                ArrSort(arr, start, low);
+                ArrSort(arr, low + 1, end);
+            }
+                return arr;
+        }
+         var arr=[3,5,2,1,6,9,8];
+         console.log(  ArrSort(arr,0,arr.length-1))
+
+    </script>
+</body>
+
+</html>
