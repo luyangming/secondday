@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+       class Hello extends React.Component{
+          render(){
+              return(
+                  <div>
+                      {this.props.children}
+                      <div>aaaaaaaaaaaa {this.props.name}</div>
+                      <p>dddddddd {this.props.age}</p>
+                 </div>
+              )
+          }
+       }
+
+        ReactDOM.render(
+             <Hello name="zhangsan" age="20">
+                 <div>
+                    hahhahahahah
+                </div>
+            </Hello>,
+           document.getElementById('root')
+
+        )
+
+
+    </script>
+</body>
+</html>
