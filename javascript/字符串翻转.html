@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          function fn(string){
+              var result='';
+              var arr=string.split(" ");
+           var res= arr.map(function(value,index){
+                  return value.split("").reverse().join("")
+            })
+            return res.join(" ")
+          }
+         var string="Let's take LeetCode contest"
+         console.log( fn(string) );
+         
+    </script>
+</body>
+</html>
