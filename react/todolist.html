@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background: red;
+        }
+        li{
+            display: none;
+        }
+        li.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+      class Main extends React.Component{
+          constructor(){
+              super()
+              this.state={
+                  todos:[{
+                     name:'吃饭',
+                     isActive:false,
+                     isShow:true
+                  },{
+                      name:'睡觉',
+                      isActive:false,
+                      isShow:true
+                  },{
+                      name:'敲代码',
+                      isActive:false,
+                      isShow:true
+                  }]
+              }
+              this.addFn=this.addFn.bind(this);
+              this.changeColor=this.changeColor.bind(this);
+              this.delColor=this.delColor.bind(this);
+              this.SearchVal=this.SearchVal.bind(this);
+          }
+          addFn(val){
+              this.setState({
+                  todos:[...this.state.todos,{name:val,isActive:false,isShow:true}]
+              })
+          }
+          delColor(index){
+              let todos=[...this.state.todos];
+              todos.splice(index,1);
+              this.setState({
+                  todos
+              })
+          }
+          changeColor(index){
+              let todos=[...this.state.todos];
+              todos[index].isActive=!todos[index].isActive;
+              this.setState({
+                todos
+              })
+          }
+          SearchVal(val){
+               let todos=[...this.state.todos];
+              todos.forEach((obj ,index)=>{
+               if(obj.name.includes(val)){
+                   obj.isShow=true;
+               }else{
+                   obj.isShow=false;
+               }
+              })
+              this.setState({
+                todos
+              })
+          }
+          render(){
+              return(
+                  <div>
+                    <h3>todolist</h3>
+                    <Search SearchVal={this.SearchVal}></Search>
+                    <Add addFn={this.addFn}></Add>
+                    <List todos={this.state.todos} 
+                    delColor={this.delColor}
+                    changeColor={this.changeColor}></List>
+                  </div> 
+              )
+          }
+      }
+      class Add extends React.Component{
+          render(){
+              return(
+                  <div>
+                  <label htmlFor="addValue">添加：</label>
+                  <input id="addValue" ref={input=>this.myInput=input} type="text"/>
+                  <button onClick={()=>{
+                      this.props.addFn(this.myInput.value);
+                      this.myInput.value="";
+                  }
+
+                  }>添加</button>
+                  </div>
+              )
+          }
+      }
+      class Search extends React.Component{
+          render(){
+              return(
+                  <div>
+                   <label htmlFor="search">搜索：</label>
+                   <input id="search"  type="text" onChange={(e)=>{
+                       this.props.SearchVal(e.target.value);
+                   }
+                   }/>
+                   <button>搜索</button>
+                  </div>
+              )
+          }
+      }
+      class List extends React.Component{
+          render(){
+              return(
+                 <ul>
+                    {
+
+                        this.props.todos.map((obj,index)=>{
+                            let isActive=obj.isActive?'red':"";
+                            let isShow=obj.isShow?'show':"";
+                            return (
+                            <li 
+                            className={isActive+" "+isShow}
+                            key={index}
+                            onClick={()=>{
+                                this.props.changeColor(index);
+                            }}
+                            >
+                            {obj.name}
+                            <button onClick={(e)=>{
+                                  this.props.delColor(index);
+                                  e.stopPropagation();
+                            }}>del</button>
+                            </li>
+                            )
+                        })
+                    }
+                  
+                 </ul>
+              )
+          }
+      }
+
+       ReactDOM.render(
+             <Main></Main>,
+             document.getElementById('root')
+       )
+    
+     
+    </script>
+    
+</body>
+</html>
