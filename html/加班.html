@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function go(num, arr) {
+            var arr1 = [];
+            for (var i = 0; i < arr.length; i++) {
+                var result = arr[i];
+                if (result == 1 && arr[i + 1] == 1) {
+                    arr1.push(result);
+                   
+                    
+                }else if(result==0){
+                     console.log(arr[i].length);
+                     
+                }else{
+                  if(result==2){
+                      if(Math.floor(Math.random())>0.5&&arr[i+1]==1){
+                        console.log(((1+arr1.length-1)*(arr1.length-1))/2);
+                      }
+                  }
+                }
+            }
+           return arr1;
+        }
+
+        var arr = [1, 2, 1];
+        console.log(go(3, arr));
+
+    </script>
+</body>
+
+</html>

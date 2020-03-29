@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function test(str) {
+            let count = 0;
+            let middle = null;
+            let end = null;
+            let endCount = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (!middle) {
+                    middle = str[i]
+                };
+                if (middle === str[i]) {
+                    count++;
+                } else {
+                    if (count > endCount || !endCount) {
+                        end = str[i - 1];
+                        endCount = count;
+                    }
+                    middle = str[i];
+                    count = 1;
+                }
+            }
+            console.log(end + '-,' + endCount);
+        }
+        var a = 'aaaaaaaaaaaad';
+        test(a);
+
+    </script>
+</body>
+
+</html>
