@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     function fn(arr){
+         var obj={};
+         var result=[];
+         for(var i=0;i<arr.length;i++){
+             var arr1=arr[i];
+             if(!obj[arr1]){
+               obj[arr1]=1;
+               result.push(arr1)
+             }
+         }
+         return result;
+     }
+    var arr=[1,1,1,2,2,1,6,6,'a','b','a']
+    console.log(fn(arr));
+    
+
+    var arr1=[0,1]
+    console.log(arr1.length);
+    
+    </script>
+</body>
+</html>
