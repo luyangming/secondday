@@ -7,21 +7,36 @@
 </head>
 <body>
     <script>
-        function fn(str){
-            var obj={};
-            var result='';
-           for(var i=0;i<str.length;i++){
-               var s=str[i];
-              if(!obj[s]){
-                obj[s]=1;
-                result+=s;
-              }
-           }
-           return result;
+        // function fn(str){
+        //     var obj={};
+        //     var result='';
+        //    for(var i=0;i<str.length;i++){
+        //        var s=str[i];
+        //       if(!obj[s]){
+        //         obj[s]=1;
+        //         result+=s;
+        //       }
+        //    }
+        //    return result;
+        // }
+        // var str='111222333aabb'
+        // console.log(fn(str));
+
+        function fn(n,t){
+            var result=0;
+            var sum=0;
+           
+            if(n==0||t==0){
+              return sum;
+            }
+          for(var i=0;i<t;i++){
+              result=result*10+n;
+              sum=sum+result;
+          }
+          return sum;
         }
-        var str='111222333aabb'
-        console.log(fn(str));
-        
+       
+        console.log(fn(2,3))
     </script>
 </body>
 </html>

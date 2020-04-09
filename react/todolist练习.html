@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .red{
+          background: pink;
+      }
+       li{
+           display: none;
+       }
+       li.show{
+           display: block;
+       }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script type="text/babel">
+    
+    class Main extends React.Component{
+        constructor(){
+            super()
+            this.state={
+               todos:[
+                   {
+                       name:'吃饭',
+                       isActive:false,
+                       isInclude:true
+                   },
+                   {
+                       name:'睡觉',
+                       isActive:false,
+                       isInclude:true
+                   },
+                   {
+                       name:'敲代码',
+                       isActive:false,
+                       isInclude:true
+                   }
+               ]
+            }
+            this.addfn=this.addfn.bind(this);
+            this.changecolorfn=this.changecolorfn.bind(this);
+            this.delfn=this.delfn.bind(this);
+            this.searchfn=this.searchfn.bind(this)
+        }
+        searchfn(val){
+             let todos=[...this.state.todos];
+             todos.forEach((obj,index)=>{
+               if(obj.name.includes(val)){
+                   obj.isInclude=true;
+               }else{
+                   obj.isInclude=false;
+               }
+             })
+             this.setState({
+                 todos
+             })
+        }
+        delfn(index){
+          let todos=[...this.state.todos];
+          todos.splice(index,1);
+          this.setState({
+              todos
+          })
+        }
+        changecolorfn(index){
+           let todos=[...this.state.todos];
+            todos[index].isActive=!todos[index].isActive;
+           this.setState({
+              todos
+           })
+        }
+        addfn(val){
+            this.setState({
+                todos:[...this.state.todos,{name:val,isActive:false,isInclude:true}]
+            })
+        }
+        render(){
+            return(
+                <div>
+                 <h2>todolist</h2>
+                  <Search searchfn={this.searchfn}></Search>
+                  <Add addfn={this.addfn}></Add>
+                  <List todos={this.state.todos}
+                        delfn={this.delfn}
+                        changecolorfn={this.changecolorfn}>
+                  </List>
+                </div>
+            )
+        }
+    }
+    class Search extends React.Component{
+        render(){
+            return(
+                <div>
+                 <label htmlFor="search">搜索:</label>
+                  <input id="search"  type="text" onChange={(e)=>{
+                       this.props.searchfn(e.target.value);
+                       console.log(111)
+                  }}/>
+                </div>
+            )
+        }
+    }
+    class Add extends React.Component{
+        render(){
+            return(
+                <div> 
+                 <label htmlFor="add">添加:</label>
+                 <input id="add" type="text" ref={input=>this.myinput=input}/>
+                 <button onClick={()=>{
+                      this.props.addfn(this.myinput.value);
+                      this.myinput.value=""
+                 }}>添加</button>
+                </div>
+            )
+        }
+    }
+    class List extends React.Component{
+        render(){
+            return(
+                <ul>
+                  {
+                      this.props.todos.map((obj,index)=>{
+                          let isActive=obj.isActive?'red':"";
+                          let isInclude=obj.isInclude?'show':""
+                         return <li key={index}
+                          className={isActive+" "+isInclude}
+                          onClick={()=>{
+                              this.props.changecolorfn(index)
+                          }}
+                         >
+                             
+                         {obj.name}
+                         <button onClick={(e)=>{
+                            this.props.delfn(index);
+                            e.stopPropagation();
+                         }}>del</button>
+                         </li>
+                      })
+                  }
+                
+                </ul>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Main/>,
+        document.getElementById('root')
+    )
+    </script>
+</body>
+</html>
