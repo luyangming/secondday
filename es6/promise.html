@@ -9,28 +9,42 @@
     
 
     <script>
-        new Promise(function(resolve,reject){
-        setTimeout(() => {
-            var code=1;
-            console.log(code);
-            if(code==0){
-                resolve();//成功时走向resolve 然后到then
-            }else{
-                reject();
-            }
-        }, 2000);
-        }).then(
-             function(){
-             console.log('第一个请求成功，可以发送第二个请求')
-             setTimeout(() => {
-                 //发送第二个请求
-                 console.log('第二个请求成功');
-             }, 1000);
-             },function(){
-                 console.log('对不起，请求失败');
-             }
-        )
-
+        // new Promise(function(resolve,reject){
+        // setTimeout(() => {
+        //     var code=1;
+        //     console.log(code);
+        //     if(code==0){
+        //         resolve();//成功时走向resolve 然后到then
+        //     }else{
+        //         reject();
+        //     }
+        // }, 2000);
+        // }).then(
+        //      function(){
+        //      console.log('第一个请求成功，可以发送第二个请求')
+        //      setTimeout(() => {
+        //          //发送第二个请求
+        //          console.log('第二个请求成功');
+        //      }, 1000);
+        //      },function(){
+        //          console.log('对不起，请求失败');
+        //      }
+        // )
+         new Promise(function(resolve,reject){
+           setTimeout(() => {
+               var code=0;
+               if(code==0){
+                   resolve();
+               }else{
+                   reject();
+               }
+           }, 1000);
+         }).then(function(){
+              console.log(111)
+         },function(){
+             console.log("请求失败");
+             
+         })
          
 
     </script>
