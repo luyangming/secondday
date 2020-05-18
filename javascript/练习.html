@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function overlap(x1, y1, height1, width1, x2, y2, height2, width2) {
+            var maxY, maxX, minX, minY;
+            maxX = x1 + width1 >= x2 + width2 ? x1 + width1 : x2 + width2;
+            maxY = y1 + height1 >= y2 + height2 ? y1 + height1 : y2 + height2;
+            minX = x1 <= x2 ? x1 : x2;
+            minY = y1 <= y2 ? y1 : y2;
+
+
+            if (maxX - minX <= width1 + width2 && maxY - minY <= height1 + height2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function steps(n) {
+            if (n == 0 || n == 1 || n == 2) {
+                return n;
+            } else {
+                return steps(n - 1) + steps(n - 2) + steps(n - 3);
+            }
+        }
+
+
+        class Task {
+                constructor() {
+                this.count = 2;
+                this.queue = [];
+                this.run = [];
+            }
+            add(task) {
+                
+            }
+        }
+        var timeout = (time) => new Promise(resolve => {
+            setTimeout(resolve, time);
+        })
+        var scheduler = new Scheduler()
+        var addTask = (time, order) => {
+        scheduler.add(() => timeout(time))
+            .then(() => console.log(order))
+        }
+        addTask(1000, '1');
+        addTask(500, '2');
+        addTask(300, '3');
+        addTask(400, '4');
+
+
+    </script>
+</body>
+
+</html>
